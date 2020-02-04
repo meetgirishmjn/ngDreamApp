@@ -1,3 +1,11 @@
+@import "../../../styles-var.scss";
+
+.app-title {
+  color: $app-primary;
+  font-size: 16px;
+  font-weight: 700;
+}
+
 .header {
   left: 0;
   right: 0;

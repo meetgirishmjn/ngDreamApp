@@ -1,26 +1,5 @@
 
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@import '~@angular/material/theming';
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat-core();
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$ng-dream-app-primary: mat-palette($mat-teal);
-$ng-dream-app-accent: mat-palette($mat-purple, 500, A100, A400);
-
-// The warn palette is optional (defaults to red).
-$ng-dream-app-warn: mat-palette($mat-red);
-
-// Create the theme object (a Sass map containing all of the palettes).
-$ng-dream-app-theme: mat-light-theme($ng-dream-app-primary, $ng-dream-app-accent, $ng-dream-app-warn);
-
+@import "styles-var";
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
@@ -35,4 +14,5 @@ html, body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background: #e5e6e6;
   background-size: 100% 100%;
+  font-size:12px;
 }
