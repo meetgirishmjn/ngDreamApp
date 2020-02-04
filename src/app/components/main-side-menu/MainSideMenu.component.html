@@ -1,6 +1,6 @@
 
 
-<div class="left-menubar main-side-menu-container" (mouseenter)="isSideMenuOpen=true" (mouseleave)="isSideMenuOpen=false" [ngClass]="{'menu-open':isSideMenuOpen, 'menu-close':!isSideMenuOpen}" [@onSideNavChange]="isSideMenuOpen ? 'open' : 'close'">
+<div class="left-menubar main-side-menu-container" ngClass.xs="class1" (mouseenter)="isSideMenuOpen=true" (mouseleave)="isSideMenuOpen=false" [ngClass]="{'menu-open':isSideMenuOpen, 'menu-close':!isSideMenuOpen}" [@onSideNavChange]="isSideMenuOpen ? 'open' : 'close'">
   <ul class="left-menubar-link">
     <li>
       <button (click)="sidenav.toggle()" mat-mini-fab color="primary" aria-label="Example icon-button with a heart icon">
@@ -11,7 +11,7 @@
       <button (click)="onSinenavToggle()" mat-icon-button aria-label="Example icon-button with a heart icon">
         <mat-icon>mail</mat-icon>
       </button>
-      <span matRipple class="menu-text">fdsf</span>
+      <span matRipple class="menu-text">Email</span>
     </li>
     <li>
       <button mat-icon-button aria-label="Example icon-button with a heart icon">

@@ -15,5 +15,8 @@
   background: #ffffff;
   color: rgba(49, 53, 52, 0.6);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
-  z-index: 1005;
+  z-index: 999;
+}
+.navigation-items{
+  list-style:none;
 }

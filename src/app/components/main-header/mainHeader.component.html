@@ -1,12 +1,82 @@
 <mat-toolbar class="header">
-  <button mat-icon-button>
+  <button fxHide.gt-xs mat-icon-button>
     <mat-icon>menu</mat-icon>
   </button>
 
-  <span class="app-title">MATERIAL ADMIN</span>
+  <span *ngIf="isShowCompText" class="app-title">NG DREAM APP</span>
 
-  <!-- This fills the remaining space of the current row -->
-  <span class="example-fill-remaining-space"></span>
+  <img *ngIf="!isShowCompText"  width="200" height="50" src="assets/comp-logo.jpg" />
 
-  <span></span>
+
+  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+
+    <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+      <li>
+        <button mat-icon-button [matMenuTriggerFor]="menuMail">
+          <mat-icon matBadge="15" matBadgeColor="info">mail</mat-icon>
+        </button>
+        <mat-menu #menuMail="matMenu">
+          <button mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>mail</span>
+          </button>
+          <button mat-menu-item disabled>
+            <mat-icon>voicemail</mat-icon>
+            <span>Check voice mail</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon>
+            <span>Disable alerts</span>
+          </button>
+        </mat-menu>
+      </li>
+      <li>
+        <button mat-icon-button [matMenuTriggerFor]="menuNotifications">
+          <mat-icon matBadge="15" matBadgeColor="warn">notifications</mat-icon>
+        </button>
+        <mat-menu #menuNotifications="matMenu">
+          <button mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>Notifications</span>
+          </button>
+          <button mat-menu-item disabled>
+            <mat-icon>voicemail</mat-icon>
+            <span>Check voice mail</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon>
+            <span>Disable alerts</span>
+          </button>
+        </mat-menu>
+      </li>
+      <li>
+        <a mat-raised-button href="javascript:void(0)" [matMenuTriggerFor]="menuUserProfile" style="padding:5px;">
+          <img style="width:40px;height:40px;border-radius:40px;margin:2px;" src="assets/user-pic.png" />
+          <span style="display: inline-block;    vertical-align: middle;    padding: 0 20px 0 10px;    line-height: 15px;">
+            Miss Mishti Mahajan
+            <small style="    display: block;    opacity: 0.5;">Administrator</small>
+          </span>
+        </a>
+        <mat-menu #menuUserProfile="matMenu">
+          <button mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>Profile</span>
+          </button>
+          <button mat-menu-item disabled>
+            <mat-icon>voicemail</mat-icon>
+            <span>Check voice mail</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon>
+            <span>Disable alerts</span>
+          </button>
+        </mat-menu>
+      </li>
+      <li>
+        <button mat-icon-button>
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </li>
+    </ul>
+  </div>
 </mat-toolbar>
