@@ -1,0 +1,73 @@
+.left-menubar {
+  position: fixed;
+  z-index: 1004;
+  left: 0;
+  top: 64px;
+  bottom: 0;
+  width: 64px;
+  color: rgba(12, 12, 12, 0.85);
+  background: #2b323a;
+}
+
+.left-menubar-link {
+  font-size: 12px;
+  padding: 0;
+  margin-bottom: 30px;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.65);
+
+}
+
+
+.left-menubar-link li {
+  margin-bottom: 12px;
+  list-style: none;
+  padding-left: 12px;
+}
+
+.left-menubar-link li.active {
+  background-color: #20252b;
+}
+
+.left-menubar-link li a {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  padding: 12px 0px;
+  font-size: 12px;
+  line-height: normal;
+  border-radius: 0;
+  padding-left: 0;
+  min-height: 40px;
+  min-width: 64px;
+  z-index: 1;
+  color:inherit;
+}
+
+.left-menubar-link li .title {
+  margin-left: 57px;
+  color: rgba(255, 255, 255, 0.55);
+  text-shadow: 0 1px 2px #000000;
+  position: relative;
+  left: -10px;
+  display: block;
+  padding-left: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.15, 0.99, 0.18, 1.01);
+}
+.left-menubar-link .menu-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-shadow: 0 1px 2px #000000;
+  font-style: italic;
+  cursor: pointer;
+}
+.menu-close li .menu-text {
+  display: none;
+  transition: visibility 2s linear 1.33s, opacity 0.33s linear;
+}
+.menu-open li .menu-text {
+  display: inline;
+  transition: visibility 2s linear 1.33s, opacity 0.33s linear;
+}

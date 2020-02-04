@@ -1,0 +1,38 @@
+
+
+<div class="left-menubar main-side-menu-container" (mouseenter)="isSideMenuOpen=true" (mouseleave)="isSideMenuOpen=false" [ngClass]="{'menu-open':isSideMenuOpen, 'menu-close':!isSideMenuOpen}" [@onSideNavChange]="isSideMenuOpen ? 'open' : 'close'">
+  <ul class="left-menubar-link">
+    <li>
+      <button (click)="sidenav.toggle()" mat-mini-fab color="primary" aria-label="Example icon-button with a heart icon">
+        <mat-icon>home</mat-icon>
+      </button>
+    </li>
+    <li class="active">
+      <button (click)="onSinenavToggle()" mat-icon-button aria-label="Example icon-button with a heart icon">
+        <mat-icon>mail</mat-icon>
+      </button>
+      <span matRipple class="menu-text">fdsf</span>
+    </li>
+    <li>
+      <button mat-icon-button aria-label="Example icon-button with a heart icon">
+        <mat-icon>camera</mat-icon>
+      </button>
+    </li>
+    <li>
+      <button mat-icon-button aria-label="Example icon-button with a heart icon">
+        <mat-icon>Saev</mat-icon>
+      </button>
+      <span>fdsf</span>
+    </li>
+    <li>
+      <button mat-icon-button aria-label="Example icon-button with a heart icon">
+        <mat-icon>accessible-icon</mat-icon>
+      </button>
+    </li>
+    <li>
+      <button mat-icon-button aria-label="Example icon-button with a heart icon">
+        <mat-icon>bookmark</mat-icon>
+      </button>
+    </li>
+  </ul>
+</div>-->
