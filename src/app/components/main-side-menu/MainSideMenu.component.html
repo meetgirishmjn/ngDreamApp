@@ -1,17 +1,22 @@
 
 
-<div class="left-menubar main-side-menu-container" ngClass.xs="class1" (mouseenter)="isSideMenuOpen=true" (mouseleave)="isSideMenuOpen=false" [ngClass]="{'menu-open':isSideMenuOpen, 'menu-close':!isSideMenuOpen}" [@onSideNavChange]="isSideMenuOpen ? 'open' : 'close'">
+<div class="left-menubar main-side-menu-container" ngClass.xs="hideOnMobile" (mouseenter)="isSideMenuOpen=true" (mouseleave)="isSideMenuOpen=false" [ngClass]="{'menu-open':isSideMenuOpen, 'menu-close':!isSideMenuOpen}" [@onSideNavChange]="isSideMenuOpen ? 'open' : 'close'">
   <ul class="left-menubar-link">
     <li>
       <button (click)="sidenav.toggle()" mat-mini-fab color="primary" aria-label="Example icon-button with a heart icon">
         <mat-icon>home</mat-icon>
       </button>
     </li>
-    <li class="active">
-      <button (click)="onSinenavToggle()" mat-icon-button aria-label="Example icon-button with a heart icon">
-        <mat-icon>mail</mat-icon>
-      </button>
-      <span matRipple class="menu-text">Email</span>
+    <li class="active" matRipple [matRippleColor]="white" style="cursor:pointer">
+      <div  fxLayout="row">
+        <div>
+          <button mat-icon-button aria-label="Example icon-button with a heart icon">
+            <mat-icon>mail</mat-icon>
+          </button>
+        </div>
+        <div ><span class="menu-text">Email</span></div>
+      </div>
+
     </li>
     <li>
       <button mat-icon-button aria-label="Example icon-button with a heart icon">
@@ -19,6 +24,7 @@
       </button>
     </li>
     <li>
+     
       <button mat-icon-button aria-label="Example icon-button with a heart icon">
         <mat-icon>Saev</mat-icon>
       </button>
@@ -35,4 +41,4 @@
       </button>
     </li>
   </ul>
-</div>-->
+</div>

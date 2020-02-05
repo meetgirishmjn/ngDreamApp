@@ -13,16 +13,19 @@ import { MainHeaderComponent } from './components/main-header/mainHeader.compone
 import { MainSideMenuComponent } from './components/main-side-menu/MainSideMenu.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MainDashboardComponent } from './components/main-dashboard/main-dashboard.component';
+import { LayoutComponent } from './components/layouts/layout.component';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
-        AppComponent,
+        AppComponent, LayoutComponent, MainDashboardComponent,
         MainHeaderComponent, MainSideMenuComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-      BrowserAnimationsModule,
+      BrowserAnimationsModule, MatRippleModule,
       FlexLayoutModule,
       MatButtonModule,
       MatToolbarModule, MatMenuModule, MatBadgeModule,
