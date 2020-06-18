@@ -1,11 +1,11 @@
 <mat-toolbar class="header" style="vertical-align:middle">
-  <button fxHide.gt-xs mat-icon-button>
+  <!--<button fxHide.gt-xs mat-icon-button>
     <mat-icon>menu</mat-icon>
-  </button>
+  </button>-->
 
   <span *ngIf="isShowCompText" class="app-title">NG DREAM APP</span>
 
-  <img *ngIf="!isShowCompText"  width="200" height="50" src="assets/comp-logo.jpg" />
+  <img *ngIf="!isShowCompText"  width="200" height="40" src="assets/comp-logo.png" />
 
 
   <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
@@ -74,7 +74,7 @@
       </li>
       <li>
         <button mat-icon-button>
-          <mat-icon>more_vert</mat-icon>
+          <mat-icon>menu</mat-icon>
         </button>
       </li>
     </ul>

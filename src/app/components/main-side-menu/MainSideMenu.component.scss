@@ -1,3 +1,5 @@
+@import "../../../styles-var.scss";
+
 .left-menubar {
   position: fixed;
   z-index: 1004;
@@ -6,7 +8,7 @@
   bottom: 0;
   width: 64px;
   color: rgba(12, 12, 12, 0.85);
-  background: #2b323a;
+  background: #fff;
 }
 
 .left-menubar-link {
@@ -15,8 +17,9 @@
   margin-bottom: 30px;
   text-align: left;
   color: rgba(255, 255, 255, 0.65);
-
 }
+
+
 
 
 .left-menubar-link li {
@@ -76,6 +79,58 @@
   width: auto;
   transition: visibility 0s linear 0s, opacity 300ms;
 }
-.hideOnMobile{
+.hidden {
+  display: none;
+}
+
+.left-menubar-item:hover {
+  background-color: #20252b;
+}
+
+.left-menu-list {
+  font-size: 12px;
+  padding: 0;
+  margin-bottom: 30px;
+  text-align: left;
+
+  a {
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  :hover {
+  }
+
+  .menu-text {
+    white-space: nowrap;
+    text-shadow: 0 1px 2px #000000;
+    font-style: italic;
+    cursor: pointer;
+    font-size:12px;
+    margin-left: 8px;
+    display: block;
+  }
+}
+
+.menu-close .left-menu-list .menu-text {
+  visibility: hidden;
+  opacity: 0;
+  width: 0;
+  transition: visibility 0s linear 300ms, opacity 300ms;
+}
+
+.menu-open .left-menu-list .menu-text {
+  visibility: visible;
+  opacity: 1;
+  width: auto;
+  transition: visibility 0s linear 0s, opacity 300ms;
+}
+
+.menu-close .left-menu-list .menu-expand-icon {
   display:none;
 }
+
+.menu-open .left-menu-list .menu-expand-icon {
+  display: block;
+}
+
+

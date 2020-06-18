@@ -1,4 +1,4 @@
-import { trigger, state, style, transition, animate, animateChild, query } from '@angular/animations';
+import { trigger, state, style, transition, animate, animateChild, query, stagger } from '@angular/animations';
 
 
 export const onSideNavChange = trigger('onSideNavChange', [
@@ -49,3 +49,19 @@ export const animateText = trigger('animateText', [
   transition('close => open', animate('350ms ease-in')),
   transition('open => close', animate('200ms ease-out')),
 ]);
+
+export const listAnimation = trigger('listAnimation', [
+    transition('* => *', [ // each time the binding value changes
+        query(':leave', [
+            stagger(100, [
+                animate('0.1s', style({ opacity: 0 }))
+            ])
+        ], { optional: true }),
+        query(':enter', [
+            style({ opacity: 0 }),
+            stagger(100, [
+                animate('0.1s', style({ opacity: 1 }))
+            ])
+        ], { optional: true })
+    ])
+])

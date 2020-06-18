@@ -1,44 +1,53 @@
 
 
-<div class="left-menubar main-side-menu-container" ngClass.xs="hideOnMobile" (mouseenter)="isSideMenuOpen=true" (mouseleave)="isSideMenuOpen=false" [ngClass]="{'menu-open':isSideMenuOpen, 'menu-close':!isSideMenuOpen}" [@onSideNavChange]="isSideMenuOpen ? 'open' : 'close'">
-  <ul class="left-menubar-link">
-    <li>
-      <button (click)="sidenav.toggle()" mat-mini-fab color="primary" aria-label="Example icon-button with a heart icon">
-        <mat-icon>home</mat-icon>
-      </button>
-    </li>
-    <li class="active" matRipple [matRippleColor]="white" style="cursor:pointer">
-      <div  fxLayout="row">
-        <div>
-          <button mat-icon-button aria-label="Example icon-button with a heart icon">
-            <mat-icon>mail</mat-icon>
-          </button>
+  <div class="left-menubar main-side-menu-container" ngClass.xs="hidden" (mouseleave)="isSideMenuOpen=false" [ngClass]="{'menu-open':isSideMenuOpen, 'menu-close':!isSideMenuOpen}" [@onSideNavChange]="isSideMenuOpen ? 'open' : 'close'">
+    <mat-nav-list class="left-menu-list">
+      <ng-container *ngFor="let item of menuItems">
+        <a mat-list-item
+           (click)="onItemSelected(item)" class="menu-list-item">
+          <mat-icon>
+            {{item.icon}}
+          </mat-icon>
+          <span class="menu-text">
+            {{item.name}}
+          </span>
+          <span fxFlex *ngIf="item.children && item.children.length">
+            <span fxFlex></span>
+            <mat-icon class="menu-expand-icon" [@indicatorRotate]="item.expanded ? 'expanded': 'collapsed'">
+              expand_more
+            </mat-icon>
+          </span>
+        </a>
+        <div *ngIf="item.expanded" [@listAnimation]="item.expanded">
+          <a *ngFor="let child of item.children" mat-list-item
+             class="menu-list-item">
+            <mat-icon>
+              child - {{child.icon}}
+            </mat-icon>
+            <span class="menu-text">
+              {{child.name}}
+            </span>
+          </a>
         </div>
-        <div ><span class="menu-text">Email</span></div>
-      </div>
-
-    </li>
-    <li>
-      <button mat-icon-button aria-label="Example icon-button with a heart icon">
-        <mat-icon>camera</mat-icon>
-      </button>
-    </li>
-    <li>
-     
-      <button mat-icon-button aria-label="Example icon-button with a heart icon">
-        <mat-icon>Saev</mat-icon>
-      </button>
-      <span>fdsf</span>
-    </li>
-    <li>
-      <button mat-icon-button aria-label="Example icon-button with a heart icon">
-        <mat-icon>accessible-icon</mat-icon>
-      </button>
-    </li>
-    <li>
-      <button mat-icon-button aria-label="Example icon-button with a heart icon">
-        <mat-icon>bookmark</mat-icon>
-      </button>
-    </li>
-  </ul>
-</div>
+      </ng-container>
+    </mat-nav-list>
+    <ul class="left-menubar-link">
+      <li>
+        <button mat-mini-fab color="primary">
+          <mat-icon>home</mat-icon>
+        </button>
+      </li>
+      <li *ngFor="let item of menuItems" class="left-menubar-item" [ngClass]="{'active':item.isActive}" matRipple [matRippleRadius]="50" [matRippleCentered]="true" [matRippleUnbounded]="true" style="cursor:pointer">
+        <div fxLayout="row">
+          <div>
+            <button mat-icon-button [attr.mat-mini-fab]="item.isActive?'':null" [attr.color]="item.isActive?'warn':''">
+              <mat-icon>{{item.icon}}</mat-icon>
+            </button>
+          </div>
+          <div>
+            <span class="menu-text">{{item.name}}</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>

@@ -16,6 +16,9 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MainDashboardComponent } from './components/main-dashboard/main-dashboard.component';
 import { LayoutComponent } from './components/layouts/layout.component';
 import { MatRippleModule } from '@angular/material/core';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,7 @@ import { MatRippleModule } from '@angular/material/core';
   imports: [
     BrowserModule,
     AppRoutingModule,
-      BrowserAnimationsModule, MatRippleModule,
+    BrowserAnimationsModule, MatRippleModule, MatTabsModule, MatGridListModule, MatCardModule,
       FlexLayoutModule,
       MatButtonModule,
       MatToolbarModule, MatMenuModule, MatBadgeModule,

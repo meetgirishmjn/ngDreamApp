@@ -3,23 +3,20 @@
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat-core();
-
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$ng-dream-app-primary: mat-palette($mat-teal);
-$ng-dream-app-accent: mat-palette($mat-purple, 500, A100, A400);
+$app-primary-palette: mat-palette($mat-teal);
+$app-accent-palette: mat-palette($mat-purple, 500, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$ng-dream-app-warn: mat-palette($mat-red);
+$app-warn-palette: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$ng-dream-app-theme: mat-light-theme($ng-dream-app-primary, $ng-dream-app-accent, $ng-dream-app-warn);
+$ng-dream-app-theme: mat-light-theme($app-primary-palette, $app-accent-palette, $app-warn-palette);
 
-$app-primary: mat-color($ng-dream-app-primary);
-$app-accent: mat-color($ng-dream-app-accent);
-$app-warn: mat-color($ng-dream-app-warn);
+$app-primary: mat-color($app-primary-palette);
+$app-accent: mat-color($app-accent-palette);
+$app-warn: mat-color($app-warn-palette);
+
+$app-primary-hover: mat-color($app-primary-palette,50);
