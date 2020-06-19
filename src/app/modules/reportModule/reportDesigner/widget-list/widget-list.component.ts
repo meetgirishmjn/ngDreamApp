@@ -1,7 +1,8 @@
-import { Component,OnInit, OnDestroy } from '@angular/core';
+import { Component,OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { MetadataService } from '../../../../core/services/metaDataService/metadataService';
 import { WidgetInfo } from '../../../../core/services/metaDataService/response-models';
 import { Subscription } from 'rxjs';
+import { WidgetDragArg } from '../../core/models';
 
 @Component({
   selector: 'widget-list',
@@ -9,6 +10,9 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./widget-list.component.scss']
 })
 export class WidgetListComponent implements OnInit, OnDestroy {
+
+  @Input() reportId: string;
+  @Output() onWidgetDragged = new EventEmitter<WidgetDragArg>();
 
   widgets: WidgetInfo[] = [];
   subscription: Subscription;
@@ -31,6 +35,14 @@ export class WidgetListComponent implements OnInit, OnDestroy {
     }
    
   onWidgetDrag(item: WidgetInfo) {
-    this._dragWidget = item;
+    this.onWidgetDragged.emit({ reportId: 'reportId', widget: item });
   }
 }
+
+
+
+  //products = [
+  //  { name: "Product B", description: "some description", picture: { uri: 'https://s2.wp.com/wp-content/themes/a8c/jetpackme-new/images-2018/svg/jetpack-performance.svg' } },
+  //  { name: "Product C", description: "some description", picture: { uri: 'https://s2.wp.com/wp-content/themes/a8c/jetpackme-new/images-2018/svg/jetpack-stats.svg' } },
+  //  { name: "Product D", description: "some description", picture: { uri: 'https://s2.wp.com/wp-content/themes/a8c/jetpackme-new/images-2018/svg/jetpack-security.svg' } },
+  //  { name: "Product D", description: "some description", picture: { uri: 'https://s2.wp.com/wp-content/themes/a8c/jetpackme-new/images-2018/svg/jetpack-security.svg' } }]

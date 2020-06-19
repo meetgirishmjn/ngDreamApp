@@ -1,3 +1,8 @@
+.divReportCanvas {
+  min-height: 300px;
+  width: 100%;
+  border: 1px dashed black;
+}
 
 
 .add-widget-button {
@@ -6,4 +11,10 @@
 }
 .mat-drawer-shown{
     background-color:#fff!important;
+}
+
+.grid-stack-item-content {
+  color: #2c3e50;
+  text-align: center;
+  background-color: white;
 }

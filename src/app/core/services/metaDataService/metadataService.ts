@@ -20,6 +20,7 @@ export class MetadataService {
       {
         id: "bar-chart",
         name: 'Bar Chart',
+        size:4,
         description: '',
         imageFile: 'chart-thumb.jpg',
         moduleFile: 'index.js',
