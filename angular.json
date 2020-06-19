@@ -28,9 +28,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/gridstack/gridstack.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/gridstack/jquery-1.11.2.min.js",
+              "src/assets/gridstack/jquery-ui.min.js",
+              "src/assets/gridstack/lodash.min.js",
+              "src/assets/gridstack/gridstack.js",
+              "src/assets/gridstack/gridstack.jQueryUI.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -124,6 +131,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ng-dream-app"
+    }
+  },
+  "defaultProject": "ng-dream-app",
+  "cli": {
+    "analytics": "e7f22ad6-cc62-4778-8b68-8b2f6df15366"
+  }
 }

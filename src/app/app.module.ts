@@ -37,7 +37,7 @@ import { HttpClientModule } from '@angular/common/http';
       FlexLayoutModule,
       MatButtonModule,
       MatToolbarModule, MatMenuModule, MatBadgeModule,
-      MatIconModule, MatSidenavModule, MatListModule
+    MatIconModule, MatSidenavModule, MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

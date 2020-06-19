@@ -28,11 +28,10 @@ export class WidgetListComponent implements OnInit, OnDestroy {
     });
   }
 
-
     ngOnDestroy(): void {
       if (this.subscription)
         this.subscription.unsubscribe();
-    }
+  }
    
   onWidgetDrag(item: WidgetInfo) {
     this.onWidgetDragged.emit({ reportId: 'reportId', widget: item });

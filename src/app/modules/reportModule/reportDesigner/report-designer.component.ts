@@ -1,33 +1,41 @@
-import { Component, Input, Output, EventEmitter, OnInit, AfterViewInit, ViewChild, ElementRef, ViewChildren, QueryList, ChangeDetectorRef, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, AfterViewInit, ViewChild, ElementRef, ViewChildren, QueryList, ChangeDetectorRef, OnDestroy, ChangeDetectionStrategy, ViewEncapsulation, AfterContentInit, HostListener } from '@angular/core';
 import { WidgetDragArg, WidgetInstanceRef } from '../core/models';
-import * as $ from 'jquery';
 import { FrameworkService } from '../../../core/services/frameworkService';
+import { MatSidenav } from '@angular/material/sidenav';
+import { Subscription } from 'rxjs';
 
-declare const GridStack: any;
+declare let GridStack;
+declare let $;
 
 @Component({
   selector: 'report-designer-layout',
   templateUrl: './report-designer.component.html',
   styleUrls: ['./report-designer.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
-export class ReportDesignerComponent implements OnInit, OnDestroy, AfterViewInit {
+export class ReportDesignerComponent implements OnInit, OnDestroy, AfterViewInit,AfterContentInit {
  
   @Input() reportId: string;
   @Output() onLayoutChange = new EventEmitter<number>();
 
+  @ViewChild('sidenav', { static: false }) sidenavRef: MatSidenav;
   @ViewChild('divReportCanvas', { static: false }) reportCanvasRef: ElementRef;
   @ViewChildren('gWidget') gWidgetsRef: QueryList<ElementRef>;
+
+  subscription: Subscription;
 
   widgetRefs: WidgetInstanceRef[] = [];
   activeWidgetRef: WidgetInstanceRef;
   widgetBeingDrop: WidgetDragArg;
   grid = null;
-
+  isAddWidgetClick = false;
   constructor(private framework: FrameworkService, private cdRef: ChangeDetectorRef) {
   }
     ngOnDestroy(): void {
-      console.log('ngOnDestroy')
+      if (this.subscription) {
+        this.subscription.unsubscribe();
+      }
     }
 
   ngOnInit(): void {
@@ -35,31 +43,46 @@ export class ReportDesignerComponent implements OnInit, OnDestroy, AfterViewInit
 
   }
   ngAfterViewInit(): void {
-    //setTimeout(() => {
-      //this.grid = GridStack.init({}, this.reportCanvasRef.nativeElement);
-      //console.log(this.grid);
-    //  this.cdRef.detectChanges();
-   // })
+    
   }
-
-  getGridstack() {
-    let el = $(this.reportCanvasRef.nativeElement);
-    let grid = el.data('gridstack');
-    if (!grid) {
-      el.gridstack({
-        animate: true,
-        verticalMargin: 5
-      });
-
-      grid = el.data('gridstack');
-    }
-
-    return grid;
+  ngAfterContentInit() {
+    this.subscription = this.framework.closeSidenavSubject.subscribe(needToCloseSideNave => {
+      if (needToCloseSideNave && this.sidenavRef.opened) {
+        this.sidenavRef.close();
+      }
+    });
   }
 
 
-  addWidget(tabName: string) {
-    console.log(tabName);
+  clickTimeoutRef = null;
+  @HostListener('click', ['$event'])
+  documentClick($event) {
+      let needToCloseSideNave = true;
+      try {
+        needToCloseSideNave = !this.matchParent($event.target, "MAT-SIDENAV");
+      } catch  {
+        console.log('');
+      }
+      if (needToCloseSideNave && !this.isAddWidgetClick) {
+        this.sidenavRef.close();
+      }
+
+      this.isAddWidgetClick = false;
+  }
+
+  matchParent(parentElement, tabName: string) {
+    if (!parentElement)
+      return false;
+
+    if (parentElement.tagName.toUpperCase() === tabName)
+      return true;
+
+    return this.matchParent(parentElement.parentElement, tabName);
+  }
+
+  addWidget() {
+    this.isAddWidgetClick = true;
+    this.sidenavRef.open();
   }
   onWidgetDrag(arg: WidgetDragArg) {
     this.widgetBeingDrop = arg;
@@ -71,13 +94,7 @@ export class ReportDesignerComponent implements OnInit, OnDestroy, AfterViewInit
     if (!this.widgetBeingDrop)
       return;
 
-    if (!this.grid) {
-      this.grid = GridStack.init({}, this.reportCanvasRef.nativeElement);
-      console.log(this.grid);
-    }
-   
     ev.preventDefault();
-    
 
     const dropEventInfo = {
       clientX: ev.x,
@@ -105,17 +122,33 @@ export class ReportDesignerComponent implements OnInit, OnDestroy, AfterViewInit
       const gWidgetElement = this.gWidgetsRef.find(o => $(o.nativeElement).hasClass('active'));
 
       if (gWidgetElement) {
-        
+        this.grid = this.getGridstack();
         const gsAutoPosition = true;
         const gsWidth = this.activeWidgetRef.gsWidth;
         const gsHeight = this.activeWidgetRef.gsHeight;
         this.grid.addWidget($(gWidgetElement.nativeElement), dropEventInfo.clientX, dropEventInfo.clientY, gsWidth, gsHeight, gsAutoPosition);
         this.cdRef.detectChanges();
-     //   this.onWidgetResized(gWidgetElement.nativeElement)
+        this.onWidgetResized(gWidgetElement.nativeElement)
       }
     }
 
     this.widgetBeingDrop = null;
+  }
+
+  getGridstack() {
+    const el = $(this.reportCanvasRef.nativeElement);
+    const grid = el.data('gridstack');
+    if (!grid) {
+      el.gridstack({
+        animate: true,
+        verticalMargin: 5
+      });
+
+      this.grid = el.data('gridstack');
+      return this.grid;
+    }
+
+    return grid;
   }
 
   onWidgetResized(elem) {
