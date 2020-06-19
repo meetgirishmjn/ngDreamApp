@@ -19,14 +19,19 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
+import { ReportDesignerComponent } from './modules/reportModule/reportDesigner/report-designer.component';
+import { WidgetListComponent } from './modules/reportModule/reportDesigner/widget-list/widget-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
         AppComponent, LayoutComponent, MainDashboardComponent,
-        MainHeaderComponent, MainSideMenuComponent
+    MainHeaderComponent, MainSideMenuComponent,
+    ReportDesignerComponent,WidgetListComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule, MatRippleModule, MatTabsModule, MatGridListModule, MatCardModule,
       FlexLayoutModule,

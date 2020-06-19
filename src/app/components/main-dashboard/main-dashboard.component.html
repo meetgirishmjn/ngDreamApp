@@ -1,25 +1,7 @@
 <div class="layouts-container">
   <mat-tab-group [selectedIndex]="selectedTabIndex" animationDuration="0ms" [dynamicHeight]="true">
     <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab" >
-      <div style="height:600px">
-        <mat-sidenav-container style="height:100%">
-          <div fxLayout="row" fxLayoutAlign="end center">
-            <button mat-raised-button
-                    class="add-widget-button"
-                    (click)="right.open()">
-              Add widget
-            </button>
-          </div>
-          <mat-sidenav #right position="end" style="width:auto">
-            <div class="container margin-top-20" fxLayout="row wrap" fxLayoutAlign="start space-evenly stretch" fxLayoutGap="20px">
-              <mat-card fxFlex="0 1 calc(20% - 20px)" *ngFor="let product of products; let i = index" class="product" fxLayout="column">
-                <img class="widget-image" mat-card-image src="{{product.picture.uri}}" alt="photo">
-                <mat-card-title class="widget-title">{{product.name}}</mat-card-title>
-              </mat-card>
-            </div>
-          </mat-sidenav>
-        </mat-sidenav-container>
-      </div>
+        <report-designer-layout></report-designer-layout>
     </mat-tab>
     <mat-tab disabled>
       <ng-template mat-tab-label>
