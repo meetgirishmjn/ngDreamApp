@@ -47,14 +47,13 @@ export class ReportDesignerComponent implements OnInit, OnDestroy, AfterViewInit
   }
   ngAfterContentInit() {
     this.subscription = this.framework.closeSidenavSubject.subscribe(needToCloseSideNave => {
-      if (needToCloseSideNave && this.sidenavRef.opened) {
-        this.sidenavRef.close();
+      if (needToCloseSideNave) {
+        $('.report-designer').click();
       }
     });
   }
 
 
-  clickTimeoutRef = null;
   @HostListener('click', ['$event'])
   documentClick($event) {
       let needToCloseSideNave = true;
