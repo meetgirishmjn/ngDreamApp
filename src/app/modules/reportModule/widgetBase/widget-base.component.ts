@@ -57,7 +57,7 @@ export class WidgetBaseComponent implements OnInit, AfterViewInit {
       try {
 
 
-        this.widgetPluginInstance = WidgetComponentFactory.createInstance(widgetInfo.id, this.widgetRef.width, this.widgetRef.height, this.widgetBaseRef.nativeElement);
+        this.widgetPluginInstance = WidgetComponentFactory.createInstance(widgetInfo.id, this.widgetRef.width, this.widgetRef.height, this.widgetBaseRef.nativeElement, this.widgetRef.id);
 
         if (!(typeof this.widgetPluginInstance.onRender === "function"))
           throw 'Widget instance does not implement onRender function.';

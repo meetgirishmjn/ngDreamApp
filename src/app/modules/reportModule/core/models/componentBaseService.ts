@@ -1,6 +1,7 @@
 import WidgetModule from './widgetModule';
 
 export default interface ComponentBaseService {
+  instanceId: string;
   width: number;
   height: number;
   widgetId: string;

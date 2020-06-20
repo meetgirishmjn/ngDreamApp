@@ -70,7 +70,7 @@
         canvas.height = this.$base.height;
         this.$base.element.appendChild(canvas);    
         var ctx = canvas.getContext('2d');
-        let chart = new Chart(ctx,this.config);
+        this.chart = new Chart(ctx,this.config);
       },
 
       onResize: function () {
@@ -78,7 +78,8 @@
       },
 
       onRegionChange(regionCode) {
-        console.log(regionCode);
+        this.chart.data.labels = this.chart.data.labels = this.chart.data.labels.map((o, i) => regionCode + i);
+        this.chart.update();
       }
     }
 

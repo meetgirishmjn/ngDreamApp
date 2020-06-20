@@ -2,17 +2,18 @@ import WidgetModule from './widgetModule';
 import ComponentBaseService from './componentBaseService';
 
 export default class  WidgetComponentFactory {
-  static compoenetRegistry = {};
+  static componentRegistry = {};
+  static plugInInstances: WidgetModule[] = [];
 
   constructor() {
   }
 
   static registerModule(widgetId: string, module: WidgetModule) {
-    WidgetComponentFactory.compoenetRegistry[widgetId] = module;
+    WidgetComponentFactory.componentRegistry[widgetId] = module;
   }
 
-  static createInstance(widgetId: string, width: number, height: number, element: HTMLElement, dataset: {}=null): WidgetModule {
-    const module = WidgetComponentFactory.compoenetRegistry[widgetId];
+  static createInstance(widgetId: string, width: number, height: number, element: HTMLElement, instanceId:string): WidgetModule {
+    const module = WidgetComponentFactory.componentRegistry[widgetId];
     if (!module)
       throw 'Widget module not registered for Widget-id: ' + widgetId;
 
@@ -23,6 +24,7 @@ export default class  WidgetComponentFactory {
     let newInstance: WidgetModule = null;
     try {
       const $base: ComponentBaseService = {
+        instanceId: instanceId,
         element: element,
         height: height,
         width: width,
@@ -31,6 +33,8 @@ export default class  WidgetComponentFactory {
       }
 
       newInstance = new widgetModule($base);
+
+      WidgetComponentFactory.plugInInstances.push(newInstance);
     } catch (ex) {
       newInstance = null;
     }
@@ -42,7 +46,15 @@ export default class  WidgetComponentFactory {
   }
 
   static plugInEventTriggered(instance:WidgetModule, eventName:string,args:any[]) {
-    const widgetId = instance.$base.widgetId;
-    const module: WidgetModule = WidgetComponentFactory.compoenetRegistry[widgetId];
+    const instanceId = instance.$base.instanceId;
+    const allInstances = WidgetComponentFactory.plugInInstances.filter(o => o.$base.instanceId !== instanceId);
+    allInstances.forEach(o => {
+      (o.$base.widgetEventListeners || []).forEach(listner => {
+        if (listner.callback) {
+          const callback = listner.callback.bind(o);
+          callback(args[0]);
+        }
+      })
+    });
   }
 }
