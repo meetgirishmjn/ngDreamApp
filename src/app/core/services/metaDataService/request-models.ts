@@ -1,3 +1,3 @@
-export interface demo {
+ interface demo {
 
 }

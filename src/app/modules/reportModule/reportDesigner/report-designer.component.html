@@ -15,12 +15,9 @@
         <div [id]="reportId" #divReportCanvas class="divReportCanvas grid-stack">
           <div #gWidget *ngFor="let widgetRef of widgetRefs;" (click)="activeWidgetRef=widgetRef" class="gwidget" [ngClass]="{'active':widgetRef.id==activeWidgetRef?.id}">
             <div class="grid-stack-item-content shadow widgetContainerNoFlow" [ngClass]="{'shadowFix':widgetRef.id==activeWidgetRef?.id}">
-              my first widget
+              <widget-base [widgetRef]="widgetRef" [size]="{width:widgetRef.width,height:widgetRef.height}" ></widget-base>
             </div>
           </div>
-            <!--<div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="4">
-              <div class="grid-stack-item-content">my first widget</div>
-            </div>-->
           </div>
         </div>
     </div>

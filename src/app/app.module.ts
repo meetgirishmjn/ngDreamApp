@@ -22,12 +22,14 @@ import { MatCardModule } from '@angular/material/card';
 import { ReportDesignerComponent } from './modules/reportModule/reportDesigner/report-designer.component';
 import { WidgetListComponent } from './modules/reportModule/reportDesigner/widget-list/widget-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { WidgetBaseComponent } from './modules/reportModule/widgetBase/widget-base.component';
 
 @NgModule({
   declarations: [
         AppComponent, LayoutComponent, MainDashboardComponent,
     MainHeaderComponent, MainSideMenuComponent,
-    ReportDesignerComponent,WidgetListComponent
+    ReportDesignerComponent, WidgetListComponent,
+    WidgetBaseComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +40,7 @@ import { HttpClientModule } from '@angular/common/http';
       MatButtonModule,
       MatToolbarModule, MatMenuModule, MatBadgeModule,
     MatIconModule, MatSidenavModule, MatListModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

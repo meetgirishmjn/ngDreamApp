@@ -1,8 +1,14 @@
-import { WidgetInfo } from '../../../../core/services/metaDataService/response-models';
+import WidgetModule from './widgetModule';
 
-export interface WidgetDragArg {
-  reportId: string;
-  widget: WidgetInfo;
+export interface WidgetInfo {
+  id: string;
+  name: string;
+  description: string;
+  size: number;
+  imageFile: string;
+  moduleFile: string;
+  styleFiles: string[];
+  scriptFiles: string[];
 }
 
 export interface WidgetInstanceRef {
@@ -19,17 +25,7 @@ export interface WidgetInstanceRef {
   instance: WidgetModule;
 }
 
-export interface WidgetModule {
-  $base: ComponentBaseService;
-  onInit(base: ComponentBaseService);
-  onDraw(callback: Function);
-  onResize();
-  onViewModel();
-}
-
-export interface ComponentBaseService {
-  width: number;
-  height: number;
-  widgetCode: string;
-  element: HTMLElement;
+export interface WidgetDragArg {
+  reportId: string;
+  widget: WidgetInfo;
 }

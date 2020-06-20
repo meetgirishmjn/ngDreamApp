@@ -140,7 +140,8 @@ export class ReportDesignerComponent implements OnInit, OnDestroy, AfterViewInit
     if (!grid) {
       el.gridstack({
         animate: true,
-        verticalMargin: 5
+        verticalMargin: 5,
+       // disableResize: true 
       });
 
       this.grid = el.data('gridstack');
