@@ -17,19 +17,20 @@ import { MainDashboardComponent } from './components/main-dashboard/main-dashboa
 import { LayoutComponent } from './components/layouts/layout.component';
 import { MatRippleModule } from '@angular/material/core';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { ReportDesignerComponent } from './modules/reportModule/reportDesigner/report-designer.component';
 import { WidgetListComponent } from './modules/reportModule/reportDesigner/widget-list/widget-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { WidgetBaseComponent } from './modules/reportModule/widgetBase/widget-base.component';
+import { WidgetBaseComponent, ConfirmDeleteWidgetDialog } from './modules/reportModule/widgetBase/widget-base.component';
 
 @NgModule({
   declarations: [
         AppComponent, LayoutComponent, MainDashboardComponent,
     MainHeaderComponent, MainSideMenuComponent,
     ReportDesignerComponent, WidgetListComponent,
-    WidgetBaseComponent,
+    WidgetBaseComponent, ConfirmDeleteWidgetDialog
   ],
   imports: [
     BrowserModule,
@@ -40,8 +41,9 @@ import { WidgetBaseComponent } from './modules/reportModule/widgetBase/widget-ba
       MatButtonModule,
       MatToolbarModule, MatMenuModule, MatBadgeModule,
     MatIconModule, MatSidenavModule, MatListModule,
-
+    MatDialogModule
   ],
+  entryComponents: [ConfirmDeleteWidgetDialog],
   providers: [],
   bootstrap: [AppComponent]
 })

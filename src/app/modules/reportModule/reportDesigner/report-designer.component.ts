@@ -1,8 +1,9 @@
 import { Component, Input, Output, EventEmitter, OnInit, AfterViewInit, ViewChild, ElementRef, ViewChildren, QueryList, ChangeDetectorRef, OnDestroy, ChangeDetectionStrategy, ViewEncapsulation, AfterContentInit, HostListener } from '@angular/core';
-import { WidgetDragArg, WidgetInstanceRef } from '../core/models';
+import { WidgetDragArg, WidgetInstanceRef, WidgetToolBarEventArg } from '../core/models';
 import { FrameworkService } from '../../../core/services/frameworkService';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Subscription } from 'rxjs';
+import WidgetModule from '../core/models/widgetModule';
 
 declare let GridStack;
 declare let $;
@@ -164,5 +165,29 @@ export class ReportDesignerComponent implements OnInit, OnDestroy, AfterViewInit
     this.activeWidgetRef.width = w;
     this.activeWidgetRef.height = h;
   }
- 
+
+  onWidgetEvent(arg: WidgetToolBarEventArg) {
+    let widget: WidgetInstanceRef = null;
+    switch (arg.eventName) {
+      case 'toolbar-delete':
+          widget = this.widgetRefs.find(o => o.id == arg.widgetRef.id);
+        if (widget)
+          this.deleteWidget(arg.eventRef, widget);
+        break;
+    }
+  }
+
+  deleteWidget(ev, item: WidgetInstanceRef) {
+    event.stopPropagation();
+
+
+    const el = $(ev.target).closest('.gwidget');
+    const grid = this.getGridstack();
+    grid.removeWidget(el);
+
+    //if (this.activeWidget.id == item.id)
+    this.activeWidgetRef = null;
+
+    this.widgetRefs = this.widgetRefs.filter(o => o.id !== item.id);
+  }
 }

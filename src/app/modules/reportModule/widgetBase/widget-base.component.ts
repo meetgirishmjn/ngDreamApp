@@ -1,9 +1,11 @@
-import { Component, OnInit, AfterViewInit, Input, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, ViewChild, ElementRef, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { FrameworkService } from '../../../core/services/frameworkService';
 import { MetadataService } from '../../../core/services/metaDataService/metadataService';
-import { WidgetInstanceRef } from '../core/models';
+import { WidgetInstanceRef, WidgetToolBarEventArg } from '../core/models';
 import WidgetModule from '../core/models/widgetModule';
 import WidgetComponentFactory from '../core/models/widgetComponentFactory';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { inject } from '@angular/core/testing';
 
 declare let $;
 
@@ -26,13 +28,15 @@ export class WidgetBaseComponent implements OnInit, AfterViewInit {
   get size(): { width: number, height: number } { return this._size; }
  //--
 
+  @Output() onEvent = new EventEmitter<WidgetToolBarEventArg>();
+
   @ViewChild('widgetBase', { static: false }) widgetBaseRef: ElementRef;
   @ViewChild('widgetToolBar', { static: false }) widgetToolBarRef: ElementRef;
 
   widgetPluginInstance: WidgetModule = null;
   isToolBarHover = false;
 
-  constructor( private framework: FrameworkService,  private service: MetadataService) {
+  constructor(private framework: FrameworkService, private service: MetadataService, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -85,4 +89,28 @@ export class WidgetBaseComponent implements OnInit, AfterViewInit {
 
   }
 
+  onDeleteWidget(evt) {
+    const dialogRef = this.dialog.open(ConfirmDeleteWidgetDialog, {
+      width: '250px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == true) {
+        this.onEvent.emit({
+          eventName: 'toolbar-delete',
+          widgetRef: this.widgetRef,
+          eventRef: evt
+        });
+      }
+    });
+  }
+
 }
+
+@Component({
+  templateUrl: 'confirm-delete-dialog.html',
+})
+export class ConfirmDeleteWidgetDialog {
+ 
+}
+
