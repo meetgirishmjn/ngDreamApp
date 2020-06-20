@@ -12,48 +12,16 @@
 
     <ul fxLayout fxLayoutGap="15px" class="navigation-items">
       <li>
-        <button mat-icon-button [matMenuTriggerFor]="menuMail">
-          <mat-icon matBadge="15" matBadgeColor="info">mail</mat-icon>
-        </button>
-        <mat-menu #menuMail="matMenu">
-          <button mat-menu-item>
-            <mat-icon>dialpad</mat-icon>
-            <span>mail</span>
-          </button>
-          <button mat-menu-item disabled>
-            <mat-icon>voicemail</mat-icon>
-            <span>Check voice mail</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon>notifications_off</mat-icon>
-            <span>Disable alerts</span>
-          </button>
-        </mat-menu>
+        
       </li>
       <li>
-        <button mat-icon-button [matMenuTriggerFor]="menuNotifications">
-          <mat-icon matBadge="15" matBadgeColor="warn">notifications</mat-icon>
-        </button>
-        <mat-menu #menuNotifications="matMenu">
-          <button mat-menu-item>
-            <mat-icon>dialpad</mat-icon>
-            <span>Notifications</span>
-          </button>
-          <button mat-menu-item disabled>
-            <mat-icon>voicemail</mat-icon>
-            <span>Check voice mail</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon>notifications_off</mat-icon>
-            <span>Disable alerts</span>
-          </button>
-        </mat-menu>
+       
       </li>
       <li>
         <a mat-raised-button href="javascript:void(0)" [matMenuTriggerFor]="menuUserProfile" style="padding:5px;">
           <img style="width:40px;height:40px;border-radius:40px;margin:2px;" src="assets/user-pic.png" />
           <span style="display: inline-block;    vertical-align: middle;    padding: 0 20px 0 10px;    line-height: 15px;">
-            Miss Mishti Mahajan
+            Girish Mahajan
             <small style="    display: block;    opacity: 0.5;">Administrator</small>
           </span>
         </a>
@@ -64,11 +32,7 @@
           </button>
           <button mat-menu-item disabled>
             <mat-icon>voicemail</mat-icon>
-            <span>Check voice mail</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon>notifications_off</mat-icon>
-            <span>Disable alerts</span>
+            <span>Logout</span>
           </button>
         </mat-menu>
       </li>

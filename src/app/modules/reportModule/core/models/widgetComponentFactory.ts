@@ -27,6 +27,7 @@ export default class  WidgetComponentFactory {
         height: height,
         width: width,
         widgetId: widgetId,
+        triggerEvent: WidgetComponentFactory.plugInEventTriggered
       }
 
       newInstance = new widgetModule($base);
@@ -38,5 +39,10 @@ export default class  WidgetComponentFactory {
       throw 'failed to initialize Instance of Widget (Widget-Code: ' + widgetId + ')';
 
     return newInstance;
+  }
+
+  static plugInEventTriggered(instance:WidgetModule, eventName:string,args:any[]) {
+    const widgetId = instance.$base.widgetId;
+    const module: WidgetModule = WidgetComponentFactory.compoenetRegistry[widgetId];
   }
 }

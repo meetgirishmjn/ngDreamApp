@@ -8,6 +8,12 @@
       this._height = 300;
       this.$base = $base;
 
+      $base.widgetEventListeners = [
+        {
+          name: 'RegionChange', parameters: ['regionCode'], callback: this.onRegionChange
+        }
+      ];
+
       const randomScalingFactor = function () {
         return Math.round(Math.random() * 100);
       };
@@ -69,8 +75,14 @@
 
       onResize: function () {
         console.log('onResize');
+      },
+
+      onRegionChange(regionCode) {
+        console.log(regionCode);
       }
     }
+
+
 
     return Widget
   });

@@ -7,6 +7,13 @@
       //private members
       this._height = 300;
       this.$base = $base;
+
+      $base.widgetEvents = [
+        {
+          name: 'BarSelected',
+          parameters:['fieldName']
+        }
+      ]
     }
 
         Widget.prototype = {
@@ -23,6 +30,11 @@
             chart.addMeasureAxis("y", "Awesomeness");
             chart.addSeries(null, dimple.plot.bar);
             chart.draw();
+
+            const that = this;
+            d3.selectAll("rect.dimple-bar").on("click", function (e) {
+              that.$base.triggerEvent(that,'BarSelected', [e.xField[0]]);
+            });
             },
 
           onResize: function () {
