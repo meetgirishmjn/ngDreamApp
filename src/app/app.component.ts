@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { FrameworkService } from './core/services/frameworkService';
+import { FrameworkService } from './framework-lib/frameworkService';
 
 @Component({
   selector: 'app-root',

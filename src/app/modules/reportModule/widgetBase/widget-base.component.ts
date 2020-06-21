@@ -1,11 +1,11 @@
 import { Component, OnInit, AfterViewInit, Input, ViewChild, ElementRef, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
-import { FrameworkService } from '../../../core/services/frameworkService';
 import { MetadataService } from '../../../core/services/metaDataService/metadataService';
-import { WidgetInstanceRef, WidgetToolBarEventArg } from '../core/models';
-import WidgetModule from '../core/models/widgetModule';
-import WidgetComponentFactory from '../core/models/widgetComponentFactory';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { inject } from '@angular/core/testing';
+import { WidgetToolBarEventArg } from '../core/models';
+import { MatDialog } from '@angular/material/dialog';
+import { WidgetInstanceRef } from '../../../framework-lib';
+import WidgetModule from '../../../framework-lib/widgetModule';
+import { FrameworkService } from '../../../framework-lib/frameworkService';
+import WidgetComponentFactory from '../../../framework-lib/widgetComponentFactory';
 
 declare let $;
 

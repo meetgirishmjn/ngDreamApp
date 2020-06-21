@@ -1,9 +1,9 @@
 import { Component, Input, Output, EventEmitter, OnInit, AfterViewInit, ViewChild, ElementRef, ViewChildren, QueryList, ChangeDetectorRef, OnDestroy, ChangeDetectionStrategy, ViewEncapsulation, AfterContentInit, HostListener } from '@angular/core';
-import { WidgetDragArg, WidgetInstanceRef, WidgetToolBarEventArg } from '../core/models';
-import { FrameworkService } from '../../../core/services/frameworkService';
+import { WidgetDragArg, WidgetToolBarEventArg } from '../core/models';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Subscription } from 'rxjs';
-import WidgetModule from '../core/models/widgetModule';
+import { WidgetInstanceRef } from '../../../framework-lib';
+import { FrameworkService } from '../../../framework-lib/frameworkService';
 
 declare let GridStack;
 declare let $;

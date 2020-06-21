@@ -17,3 +17,20 @@
   text-align: center;
   background-color: white;
 }
+
+
+div.shadow:hover {
+  -moz-box-shadow: 0 0 8px #1fb5ad;
+  -webkit-box-shadow: 0 0 8px #1fb5ad;
+  box-shadow: 0 0 8px #1fb5ad;
+}
+
+div.shadowFix {
+  -moz-box-shadow: 0 0 8px #1fb5ad;
+  -webkit-box-shadow: 0 0 8px #1fb5ad;
+  box-shadow: 0 0 8px #1fb5ad;
+}
+
+.widgetContainerNoFlow {
+  overflow: hidden !important;
+}

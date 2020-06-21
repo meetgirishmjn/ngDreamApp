@@ -1,7 +1,8 @@
 import { Component,OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { MetadataService } from '../../../../core/services/metaDataService/metadataService';
 import { Subscription } from 'rxjs';
-import { WidgetDragArg, WidgetInfo } from '../../core/models';
+import { WidgetDragArg } from '../../core/models';
+import { WidgetInfo } from '../../../../framework-lib';
 
 @Component({
   selector: 'widget-list',

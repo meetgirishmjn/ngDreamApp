@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { of } from 'rxjs';
 import { delay } from "rxjs/operators"
-import { WidgetInfo } from '../../../modules/reportModule/core/models';
+import { WidgetInfo } from '../../../framework-lib';
 
 @Injectable({
   providedIn: 'root',

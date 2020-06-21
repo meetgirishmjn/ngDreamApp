@@ -1,5 +1,5 @@
-import WidgetModule from '../../../app/modules/reportModule/core/models/widgetModule';
-import ComponentBaseService from '../../../app/modules/reportModule/core/models/componentBaseService';
+import WidgetModule from '../../../app/framework-lib/widgetModule';
+import ComponentBaseService from '../../../app/framework-lib/componentBaseService';
 
 export default class DimpleJSWidget implements WidgetModule {
   $base: ComponentBaseService;
