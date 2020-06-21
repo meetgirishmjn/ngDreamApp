@@ -32,7 +32,7 @@ export class MetadataService {
         name: 'Pie Chart',
         size: 2,
         description: '',
-        imageFile: 'pie-thumbnail.png',
+        imageFile: 'pie-thumb.png',
         moduleFile: 'widgetModule.js',
         scriptFiles: ['Chart.min.js'],
         styleFiles: []

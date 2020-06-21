@@ -5,11 +5,12 @@ import { Component } from '@angular/core';
      styleUrls: ['./main-dashboard.component.scss']
 })
 export class MainDashboardComponent {
-  tabs = ['First', 'Second', 'Third'];
+  tabs = ['REPORT 1', 'REPORT 2'];
   selectedTabIndex = 0;
 
   addTab(selectAfterAdding: boolean) {
-    this.tabs.push('New');
+
+    this.tabs.push('REPORT '+(this.tabs.length+1));
 
     if (selectAfterAdding) {
       this.selectedTabIndex = this.tabs.length - 1;
